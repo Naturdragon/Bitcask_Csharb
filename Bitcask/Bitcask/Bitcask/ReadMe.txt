@@ -1,0 +1,2 @@
+﻿JSON Serialesieren kann weggelassen werden, da es n Bit Arrays gespeichert wird.
+Für den Tomb Stone wird ein eigernes Boolean Feld im Entry verwendet. Ich weis nähmlich nicht wie ich den Tomb Stone machen kann ohne das es zu fehlern kommen könnte.

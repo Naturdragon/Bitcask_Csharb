@@ -8,12 +8,13 @@ namespace Bitcask
 {
     internal class Entry<T>
     {
-        int CRC { get; set; }
-        DateTime TimeStamp { get; set; }
-        int Key_Size { get; set; }
-        int Value_Size { get; set; }
-        T Key { get; set; }
-        T Value { get; set; }
+        public int CRC { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public int Key_Size { get; set; }
+        public int Value_Size { get; set; }
+        public T Key { get; set; }
+        public T Value { get; set; }
+        public bool TombStone { get; set; }
 
         public Entry(int crc, DateTime timestamp, int keysize, int valuesize, T key, T value)
         {

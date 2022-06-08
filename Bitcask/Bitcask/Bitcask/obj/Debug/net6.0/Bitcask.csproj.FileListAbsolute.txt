@@ -3,3 +3,13 @@ C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debu
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.AssemblyInfoInputs.cache
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.AssemblyInfo.cs
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.csproj.CoreCompileInputs.cache
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\bin\Debug\net6.0\Bitcask.deps.json
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\bin\Debug\net6.0\Bitcask.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\bin\Debug\net6.0\Bitcask.pdb
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\bin\Debug\net6.0\FileTwoStreams.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\bin\Debug\net6.0\FileTwoStreams.pdb
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.csproj.CopyComplete
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\refint\Bitcask.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\Bitcask.pdb
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\Bitcask\obj\Debug\net6.0\ref\Bitcask.dll

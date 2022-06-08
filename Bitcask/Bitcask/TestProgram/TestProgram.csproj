@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bitcask\Bitcask.csproj" />
-    <ProjectReference Include="..\FileTwoStreamsBitcask\FileTwoStreams\FileTwoStreams.csproj" />
   </ItemGroup>
 
 </Project>

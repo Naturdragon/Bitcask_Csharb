@@ -4,12 +4,13 @@ using DamienG.Security.Cryptography;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Runtime.Serialization;
 
 namespace Bitcask
 {
     public class Bitcask<TKey, TValue> : BitcaskGenericBase<TKey, TValue>
     {
-        ConcurrentDictionary<byte[], MemdirEntry> Memdir = new ConcurrentDictionary<byte[], MemdirEntry>() { };
+        ConcurrentDictionary<byte[], MemdirEntry> Memdir = new ConcurrentDictionary<byte[], MemdirEntry>(new MyEqualityComparer()) { };
         Stream stream;
         internal string PATH_PROP { get; set; }        // Path to the Direcory
         internal string ACTIV_FILE            // Active File
@@ -40,14 +41,21 @@ namespace Bitcask
         {
             get
             {
-                DirectoryInfo info = new DirectoryInfo(PATH_PROP);
-                FileInfo[] files = info.GetFiles("*.data").OrderBy(p => p.CreationTime).ToArray();
-                List<string> data = new List<string>();
-                foreach (var item in files)
+                try
                 {
-                    data.Add(item.Name);
+                    DirectoryInfo info = new DirectoryInfo(PATH_PROP);
+                    FileInfo[] files = info.GetFiles("*.data").OrderBy(p => p.CreationTime).ToArray();
+                    List<string> data = new List<string>();
+                    foreach (var item in files)
+                    {
+                        data.Add(item.Name);
+                    }
+                    return data;
                 }
-                return data;
+                catch (Exception ex)
+                {
+                    throw new Exception("Path not set.");
+                }
             }
         }
         public override string Version { get; } = "v0.2";       // Version number major.minor
@@ -126,28 +134,52 @@ namespace Bitcask
                 Directory.CreateDirectory(path);
             }
             PATH_PROP = path;
+            OpenFile();
             FillDirectory();
             stream = BitcaskFileStream.Create(ACTIV_FILE, StorageType.OnDisc);
-            OpenFile();
         }
         public override TValue Read(TKey key)                   // Return row with given key (Look up in Memdir -> Binärfile Lesen und Wert zurück geben)
         {
-            byte[] data = new byte[Memdir[tools.ObjectToByteArray(key)].Value_Size];
-
-            stream.Read(data, Memdir[tools.ObjectToByteArray(key)].Value_Position, Memdir[tools.ObjectToByteArray(key)].Value_Size);
-
-
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream(data))
+            try
             {
-                object obj = bf.Deserialize(ms);
-                Entry<TKey, TValue> entry = (Entry<TKey, TValue>)obj;
-                Crc32 crc32 = new Crc32();
-                if (entry.CRC == BitConverter.ToInt32(crc32.ComputeHash(tools.ObjectToByteArray(entry)))) throw new Exception("The Data is corupted.");
-                return entry.value.Value;
+                byte[] test = tools.ObjectToByteArray(key);
+                MemdirEntry mementry = Memdir[test];
+
+                byte[] data = new byte[mementry.Value_Size];
+
+                //TODO: Reat richtig setzen
+                //Memdir[tools.ObjectToByteArray(key)].FileID;
+
+                stream.Read(data, Memdir[tools.ObjectToByteArray(key)].Value_Position, Memdir[tools.ObjectToByteArray(key)].Value_Size);
+                stream.Flush();
+
+                BinaryFormatter bf = new BinaryFormatter();
+                using (MemoryStream ms = new MemoryStream(data))
+                {
+                    object obj = bf.Deserialize(ms);
+                    Entry<TKey, TValue> entry = (Entry<TKey, TValue>)obj;
+                    //Entry<TKey, TValue> entry = Deserialize<Entry<TKey,TValue>>(data);
+
+                    Crc32 crc32 = new Crc32();
+                    if (entry.CRC == BitConverter.ToInt32(crc32.ComputeHash(tools.ObjectToByteArray(entry)))) throw new Exception("The Data is corupted.");
+                    return entry.value.Value;
+                }
+            }catch (Exception ex)
+            {
+                throw new Exception($"Error: Unable to read.\n{ex}");
             }
         }
         #endregion
+
+        private T Deserialize<T>(byte[] param)
+        {
+            using (MemoryStream ms = new MemoryStream(param))
+            {
+                IFormatter br = new BinaryFormatter();
+                return (T)br.Deserialize(ms);
+            }
+        }
+
 
         public override IEnumerable<(TKey, TValue)> ReadAll()   // Return IEnumerable of (key,value) tuple of all rows (no sort specified)
         {
@@ -167,19 +199,25 @@ namespace Bitcask
         }
         public override void Write(TKey key, TValue record)     // Write row with given key (Append)
         {
+            byte[] bytearr = tools.ObjectToByteArray(new Entry<TKey, TValue>(DateTime.Now,tools.ObjectToByteArray(key).Length,tools.ObjectToByteArray(record).Length,key,record));
             //34,359,738,368
-            long size = new System.IO.FileInfo(FULL_PATH).Length + tools.ObjectToByteArray(key).Length + tools.ObjectToByteArray(record).Length;
+            long size = new System.IO.FileInfo(FULL_PATH).Length + bytearr.Length;
             if (size! > 34_359_738_368)
             {
                 OpenFile();
                 updateActivFile();
             }
 
-            var lineCount = File.ReadLines(@"C:\file.txt").Count() + 1;
+            var lineCount = File.ReadLines(FULL_PATH).Count();
+            byte[] test = tools.ObjectToByteArray(key);
 
-            stream.Write(tools.ObjectToByteArray(record), lineCount, tools.ObjectToByteArray(record).Length);
-            tools tool = new tools();
-            Memdir.AddOrUpdate(tools.ObjectToByteArray(key), new MemdirEntry(tool.GetFileID(FULL_PATH), tools.ObjectToByteArray(record).Length, lineCount), (key, oldValue) => new MemdirEntry(tool.GetFileID(FULL_PATH), tools.ObjectToByteArray(record).Length, lineCount));
+
+
+            stream.Write(bytearr, lineCount, tools.ObjectToByteArray(record).Length);
+            stream.Flush();
+
+            MemdirEntry mementry = new MemdirEntry(ACTIV_FILE.Split(".")[0], bytearr.Length, lineCount);
+            Memdir.AddOrUpdate(tools.ObjectToByteArray(key), mementry, (key, oldValue) => mementry);
         }
 
         #region internalClasses
@@ -190,7 +228,7 @@ namespace Bitcask
         /// <returns>Returns the Active File</returns>
         internal string updateActivFile()
         {
-            return DataFiles.First();
+            return DataFiles.FirstOrDefault();
         }
 
         /// <summary>
@@ -199,7 +237,8 @@ namespace Bitcask
         internal void OpenFile()
         {
             string pfad = PATH_PROP;
-            string newpath = DateOnly.FromDateTime(DateTime.Now).ToString("dd.MM.yyyy").Replace(".", "") + ".data";
+            //string newpath = DateOnly.FromDateTime(DateTime.Now).ToString("dd.MM.yyyy").Replace(".", "") + ".data";
+            string newpath = Guid.NewGuid().ToString("N") + ".data";
             string[] filelist = Directory.GetFiles(PATH_PROP);
             int flnr = 0;
             bool exists = false;
@@ -222,8 +261,8 @@ namespace Bitcask
                 }
                 flnr++;
             } while (exists);
-            newpath = newpath + ".data";
-            File.Create(PATH_PROP + @"\" + newpath);
+            //newpath = newpath + ".data";
+            File.Create(PATH_PROP + @"\" + newpath).Close();
             updateActivFile();
         }
 
@@ -233,7 +272,7 @@ namespace Bitcask
             int position = 0;
             for (int i = 0; i < filePaths.Length; i++)
             {
-                string FilePath = PATH_PROP + @"\" + filePaths[i];
+                string FilePath = filePaths[i];
                 using (StreamReader reader = new StreamReader(FilePath))
                 {
                     string line;
@@ -253,7 +292,7 @@ namespace Bitcask
                             if (!KeyExists(entry.value.Key))
                             {
                                 tools tool = new tools();
-                                Memdir.AddOrUpdate(tools.ObjectToByteArray(entry.value.Key), new MemdirEntry(tool.GetFileID(filePaths[i]), entry.value.Value_Size, position), (key, oldValue) => new MemdirEntry(tool.GetFileID(FilePath), entry.value.Value_Size, position));
+                                Memdir.AddOrUpdate(tools.ObjectToByteArray(entry.value.Key), new MemdirEntry(FilePath.Split(".")[0], tools.ObjectToByteArray( entry).Length, position), (key, oldValue) => new MemdirEntry(FilePath.Split(".")[0], tools.ObjectToByteArray(entry).Length, position));
                             }
                         }
                         position++;

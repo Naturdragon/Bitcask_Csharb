@@ -13,6 +13,7 @@ namespace Bitcask
         public static byte[] ObjectToByteArray(Object obj)
         {
             if (obj == null) return null;
+            if (obj.GetType().Equals(  typeof (byte[]))) return (byte[])obj;
 
             BinaryFormatter bf = new BinaryFormatter();
             MemoryStream ms = new MemoryStream();
@@ -22,21 +23,6 @@ namespace Bitcask
         }
 
         /*
-        public static MemdirEntry FromByteArray(byte[] data)
-        {
-            if (data == null)
-                throw new Exception("Memdir was unable to be build because the data was corupted.");
-                return;
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream ms = new MemoryStream(data))
-            {
-                object obj = bf.Deserialize(ms);
-                Entry<TKey,TValue> entry = (Entry<TKey, TValue>)obj;
-                return new MemdirEntry()
-            }
-        }*/
-
-
         #region Get_File_ID
         public struct BY_HANDLE_FILE_INFORMATION
         {
@@ -68,5 +54,6 @@ namespace Bitcask
             return fileIndex;
         }
         #endregion
+        */
     }
 }

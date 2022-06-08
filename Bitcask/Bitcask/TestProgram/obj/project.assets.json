@@ -65,8 +65,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Bitcask >= 1.0.0",
-      "FileTwoStreams >= 1.0.0"
+      "Bitcask >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -103,9 +102,6 @@
           "projectReferences": {
             "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\Bitcask\\Bitcask\\Bitcask\\Bitcask.csproj": {
               "projectPath": "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\Bitcask\\Bitcask\\Bitcask\\Bitcask.csproj"
-            },
-            "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\Bitcask\\Bitcask\\FileTwoStreamsBitcask\\FileTwoStreams\\FileTwoStreams.csproj": {
-              "projectPath": "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\Bitcask\\Bitcask\\FileTwoStreamsBitcask\\FileTwoStreams\\FileTwoStreams.csproj"
             }
           }
         }

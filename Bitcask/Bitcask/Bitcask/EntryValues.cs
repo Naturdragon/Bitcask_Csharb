@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bitcask
 {
+    [Serializable]
     internal class EntryValues<TKey, TValue>
     {
         public DateTime TimeStamp { get; set; }

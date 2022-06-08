@@ -14,12 +14,12 @@ namespace Bitcask
         /// Value_Position: The Position of the Value in the Binary File
         /// TimeStamp: TimeStamp
         /// </summary>
-        public ulong FileID { get; set; }
-        public int Value_Size { get; set; }
+        public string FileID { get; set; }
+        public int Value_Size { get; set; } // Size vom ganzen object
         public int Value_Position { get; set; }
         public DateTime TimeStamp { get; set; } = DateTime.Now;
 
-        public MemdirEntry(ulong fieldid, int value_size, int value_position)
+        public MemdirEntry(string fieldid, int value_size, int value_position)
         {
             FileID = fieldid;
             Value_Size = value_size;

@@ -8,6 +8,7 @@ using DamienG.Security.Cryptography;
 
 namespace Bitcask
 {
+    [Serializable]
     internal class Entry<TKey,TValue>
     {
 

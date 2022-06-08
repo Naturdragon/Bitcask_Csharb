@@ -1,0 +1,5 @@
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\TestProgram\obj\Debug\net6.0\TestProgram.csproj.AssemblyReference.cache
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\TestProgram\obj\Debug\net6.0\TestProgram.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\TestProgram\obj\Debug\net6.0\TestProgram.AssemblyInfoInputs.cache
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\TestProgram\obj\Debug\net6.0\TestProgram.AssemblyInfo.cs
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\Bitcask\Bitcask\TestProgram\obj\Debug\net6.0\TestProgram.csproj.CoreCompileInputs.cache

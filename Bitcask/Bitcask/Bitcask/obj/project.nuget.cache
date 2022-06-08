@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cY3GPWQItpZxgRoGdjWYUi9tolgri7VeD1WpuLAkhpp+jpRvmVtiYDjFWb43DcMov6LGOk1oJ8A5V7jRmM2Zsw==",
+  "dgSpecHash": "KVJuSq1Fk58hSkClwSVITSjC1o3ars5XUnM/P2UoZPOkTcNWpdzZmzkwzx6nk5JTq3CS02+uN2H5DjaMpTGSqQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\Bitcask\\Bitcask\\Bitcask\\Bitcask.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\martin\\.nuget\\packages\\crc.fast.net.core\\1.0.0\\crc.fast.net.core.1.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

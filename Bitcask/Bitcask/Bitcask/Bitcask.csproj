@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CRC.Fast.Net.Core" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FileTwoStreamsBitcask\FileTwoStreams\FileTwoStreams.csproj" />
+  </ItemGroup>
+
 </Project>

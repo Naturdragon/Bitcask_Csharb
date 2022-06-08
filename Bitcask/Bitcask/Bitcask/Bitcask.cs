@@ -150,7 +150,7 @@ namespace Bitcask
                 //TODO: Reat richtig setzen
                 //Memdir[tools.ObjectToByteArray(key)].FileID;
 
-                stream.Read(data, Memdir[tools.ObjectToByteArray(key)].Value_Position, Memdir[tools.ObjectToByteArray(key)].Value_Size);
+                stream.Read(data, Memdir[test].Value_Position, Memdir[test].Value_Size);
                 stream.Flush();
 
                 BinaryFormatter bf = new BinaryFormatter();
@@ -199,7 +199,8 @@ namespace Bitcask
         }
         public override void Write(TKey key, TValue record)     // Write row with given key (Append)
         {
-            byte[] bytearr = tools.ObjectToByteArray(new Entry<TKey, TValue>(DateTime.Now,tools.ObjectToByteArray(key).Length,tools.ObjectToByteArray(record).Length,key,record));
+            Entry<TKey, TValue> entry = new Entry<TKey, TValue>(DateTime.Now, tools.ObjectToByteArray(key).Length, tools.ObjectToByteArray(record).Length, key, record);
+            byte[] bytearr = tools.ObjectToByteArray(entry);
             //34,359,738,368
             long size = new System.IO.FileInfo(FULL_PATH).Length + bytearr.Length;
             if (size! > 34_359_738_368)
@@ -208,13 +209,15 @@ namespace Bitcask
                 updateActivFile();
             }
 
-            var lineCount = File.ReadLines(FULL_PATH).Count();
+            var lineCount = File.ReadLines(FULL_PATH).Count();   // Kann später zu Problemen Führen                                                                                                                                  
             byte[] test = tools.ObjectToByteArray(key);
 
 
 
-            stream.Write(bytearr, lineCount, tools.ObjectToByteArray(record).Length);
+            stream.Write(bytearr, lineCount, bytearr.Length);
             stream.Flush();
+            byte[] b = new byte[bytearr.Length];
+            stream.Read(b, 0, bytearr.Length);
 
             MemdirEntry mementry = new MemdirEntry(ACTIV_FILE.Split(".")[0], bytearr.Length, lineCount);
             Memdir.AddOrUpdate(tools.ObjectToByteArray(key), mementry, (key, oldValue) => mementry);

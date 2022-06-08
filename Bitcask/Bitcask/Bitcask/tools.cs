@@ -19,7 +19,14 @@ namespace Bitcask
             MemoryStream ms = new MemoryStream();
             bf.Serialize(ms, obj);
 
-            return ms.ToArray();
+            // test
+            byte[] result= ms.ToArray();
+            //MemoryStream ms2 = new MemoryStream(result);
+
+           // object o =bf.Deserialize(ms2);
+
+            return result;
+
         }
 
         /*

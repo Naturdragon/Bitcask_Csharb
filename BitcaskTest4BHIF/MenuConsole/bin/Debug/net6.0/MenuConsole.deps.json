@@ -8,15 +8,32 @@
     ".NETCoreApp,Version=v6.0": {
       "MenuConsole/1.0.0": {
         "dependencies": {
-          "BitcaskLib": "1.0.0"
+          "Bitcask": "1.0.0"
         },
         "runtime": {
           "MenuConsole.dll": {}
         }
       },
-      "BitcaskLib/1.0.0": {
+      "CRC.Fast.Net.Core/1.0.0": {
         "runtime": {
-          "BitcaskLib.dll": {}
+          "lib/netcoreapp2.1/Soft160.Data.Cryptography.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Bitcask/1.0.0": {
+        "dependencies": {
+          "CRC.Fast.Net.Core": "1.0.0",
+          "FileTwoStreams": "1.0.0"
+        },
+        "runtime": {
+          "Bitcask.dll": {}
+        }
+      },
+      "FileTwoStreams/1.0.0": {
+        "runtime": {
+          "FileTwoStreams.dll": {}
         }
       }
     }
@@ -27,7 +44,19 @@
       "serviceable": false,
       "sha512": ""
     },
-    "BitcaskLib/1.0.0": {
+    "CRC.Fast.Net.Core/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-apQoK/WEkKW7eCprFnkuNbFUHYC716G8AHbl1TyKJ60aEim2qxF1F3MdodOXKKsAw0DLR/3wVwiitw5hv37s+g==",
+      "path": "crc.fast.net.core/1.0.0",
+      "hashPath": "crc.fast.net.core.1.0.0.nupkg.sha512"
+    },
+    "Bitcask/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FileTwoStreams/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

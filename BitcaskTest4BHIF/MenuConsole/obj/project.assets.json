@@ -2,28 +2,70 @@
   "version": 3,
   "targets": {
     "net6.0": {
-      "BitcaskLib/1.0.0": {
+      "CRC.Fast.Net.Core/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.1/Soft160.Data.Cryptography.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Soft160.Data.Cryptography.dll": {}
+        }
+      },
+      "Bitcask/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "CRC.Fast.Net.Core": "1.0.0",
+          "FileTwoStreams": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Bitcask.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Bitcask.dll": {}
+        }
+      },
+      "FileTwoStreams/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
-          "bin/placeholder/BitcaskLib.dll": {}
+          "bin/placeholder/FileTwoStreams.dll": {}
         },
         "runtime": {
-          "bin/placeholder/BitcaskLib.dll": {}
+          "bin/placeholder/FileTwoStreams.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "BitcaskLib/1.0.0": {
+    "CRC.Fast.Net.Core/1.0.0": {
+      "sha512": "apQoK/WEkKW7eCprFnkuNbFUHYC716G8AHbl1TyKJ60aEim2qxF1F3MdodOXKKsAw0DLR/3wVwiitw5hv37s+g==",
+      "type": "package",
+      "path": "crc.fast.net.core/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "crc.fast.net.core.1.0.0.nupkg.sha512",
+        "crc.fast.net.core.nuspec",
+        "lib/net40/Soft160.Data.Cryptography.dll",
+        "lib/netcoreapp2.1/Soft160.Data.Cryptography.dll",
+        "lib/netstandard2.0/Soft160.Data.Cryptography.dll"
+      ]
+    },
+    "Bitcask/1.0.0": {
       "type": "project",
-      "path": "../BitcaskLib/BitcaskLib.csproj",
-      "msbuildProject": "../BitcaskLib/BitcaskLib.csproj"
+      "path": "../Bitcask/Bitcask.csproj",
+      "msbuildProject": "../Bitcask/Bitcask.csproj"
+    },
+    "FileTwoStreams/1.0.0": {
+      "type": "project",
+      "path": "../FileTwoStreamsBitcask/FileTwoStreams/FileTwoStreams.csproj",
+      "msbuildProject": "../FileTwoStreamsBitcask/FileTwoStreams/FileTwoStreams.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "BitcaskLib >= 1.0.0"
+      "Bitcask >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -58,8 +100,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\BitcaskTest4BHIF\\BitcaskLib\\BitcaskLib.csproj": {
-              "projectPath": "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\BitcaskTest4BHIF\\BitcaskLib\\BitcaskLib.csproj"
+            "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\BitcaskTest4BHIF\\Bitcask\\Bitcask.csproj": {
+              "projectPath": "C:\\Users\\martin\\Documents\\GitHub\\Bitcask_Csharb\\BitcaskTest4BHIF\\Bitcask\\Bitcask.csproj"
             }
           }
         }

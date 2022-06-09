@@ -216,8 +216,8 @@ namespace Bitcask
 
             stream.Write(bytearr, lineCount, bytearr.Length);
             stream.Flush();
-            byte[] b = new byte[bytearr.Length];
-            stream.Read(b, 0, bytearr.Length);
+            //byte[] b = new byte[bytearr.Length];
+            //stream.Read(b, 0, bytearr.Length);
 
             MemdirEntry mementry = new MemdirEntry(ACTIV_FILE.Split(".")[0], bytearr.Length, lineCount);
             Memdir.AddOrUpdate(tools.ObjectToByteArray(key), mementry, (key, oldValue) => mementry);

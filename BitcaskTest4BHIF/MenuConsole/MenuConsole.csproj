@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BitcaskLib\BitcaskLib.csproj" />
+    <ProjectReference Include="..\Bitcask\Bitcask.csproj" />
   </ItemGroup>
 
 </Project>

@@ -21,8 +21,6 @@ C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\MenuConsole.runtimeconfig.json
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\MenuConsole.dll
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\MenuConsole.pdb
-C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\BitcaskLib.dll
-C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\BitcaskLib.pdb
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\MenuConsole.csproj.AssemblyReference.cache
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\MenuConsole.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\MenuConsole.AssemblyInfoInputs.cache
@@ -34,3 +32,8 @@ C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\MenuConsole.pdb
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\MenuConsole.genruntimeconfig.cache
 C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\obj\Debug\net6.0\ref\MenuConsole.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\Soft160.Data.Cryptography.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\Bitcask.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\FileTwoStreams.dll
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\Bitcask.pdb
+C:\Users\martin\Documents\GitHub\Bitcask_Csharb\BitcaskTest4BHIF\MenuConsole\bin\Debug\net6.0\FileTwoStreams.pdb

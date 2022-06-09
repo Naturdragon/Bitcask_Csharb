@@ -65,7 +65,8 @@ namespace TestProgram
 
             bitcask.Write(new byte[] { 0, 1, 0}, new byte[] { 1, 0, 1 });
             Console.WriteLine("Geschrieben: 01001011 01100101 01111001 and 01010110 01100001 01101100 01110101 01100101");
-            Console.WriteLine(bitcask.Read(new byte[] { 0, 1, 0 }));
+            byte[] result = bitcask.Read(new byte[] { 0, 1, 0 });
+            Console.WriteLine($"Byte Array is: {string.Join(" ", result)}");
 
         }
     }

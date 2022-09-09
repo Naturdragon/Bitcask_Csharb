@@ -173,14 +173,6 @@ namespace Bitcask
         }
         #endregion
 
-        private T Deserialize<T>(byte[] param)
-        {
-            using (MemoryStream ms = new MemoryStream(param))
-            {
-                IFormatter br = new BinaryFormatter();
-                return (T)br.Deserialize(ms);
-            }
-        }
 
 
         public override IEnumerable<(TKey, TValue)> ReadAll()   // Return IEnumerable of (key,value) tuple of all rows (no sort specified)

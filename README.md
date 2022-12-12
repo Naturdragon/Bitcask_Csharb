@@ -1,5 +1,5 @@
 # Bitcask_Csharb
-## !Work is discontiniute!
+## The work has been discontinued
 
 ## Wichtige Begriffe
 Append:

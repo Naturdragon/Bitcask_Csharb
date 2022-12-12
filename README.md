@@ -1,5 +1,5 @@
 # Bitcask_Csharb
-## Work in Progress
+## !Work is discontiniute!
 
 ## Wichtige Begriffe
 Append:
